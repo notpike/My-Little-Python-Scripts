@@ -80,7 +80,7 @@ def main(torBool,sslBool):
                 except AttributeError:
                     pass                  
             elif("PRIVMSG" in text and channel in text and "?about" in text):
-                irc.send(channel, "PikeBot V0.1 By:NotPike notpike@horsefucker.org")
+                irc.send(channel, "PikeBot V0.1 By:NotPike")
             elif("PRIVMSG" in text and channel in text and "Nickname is already in use" in text):
                 botNick = "IfNot"+botNick
                 irc.bootStrap(botNick, channel,True, True)            
